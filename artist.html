@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Clone</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <!-- Vertical navbar -->
+    <nav>
+      <div class="vertical-nav" id="sidebar">
+        <a class="navbar-brand mt-3" href="main.html"
+          ><img
+            src="data:image/png;base64,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"
+            alt="Spotify logo"
+            class="mx-4 mb-3"
+        /></a>
+
+        <ul class="nav flex-column mb-0">
+          <div class="mx-1 mb-1">
+            <li class="nav-item px-4">
+              <i class="bi bi-house-door-fill d-inline-block"></i>
+              <a href="main.html" class="nav-link d-inline-block">Home </a>
+            </li>
+          </div>
+          <div class="mx-1 mb-1">
+            <li class="nav-item px-4">
+              <i class="bi bi-search d-inline-block"></i>
+              <a href="#" class="nav-link d-inline-block"> Search </a>
+            </li>
+          </div>
+          <div class="mx-1 mb-1">
+            <li class="nav-item px-4">
+              <i class="bi bi-collection d-inline-block"></i>
+              <a href="#" class="nav-link d-inline-block"> Your Library </a>
+            </li>
+          </div>
+        </ul>
+        <ul class="nav flex-column mt-3">
+          <div class="mx-1 mb-1">
+            <li class="nav-item px-4">
+              <i class="bi bi-plus-square d-inline-block"></i>
+              <a href="#" class="nav-link d-inline-block"> Create Playlist </a>
+            </li>
+          </div>
+          <div class="mx-1 mb-0">
+            <li class="nav-item px-4">
+              <i class="bi bi-heart-fill d-inline-block"></i>
+              <a href="favourites.html" class="nav-link d-inline-block">
+                Liked Songs
+              </a>
+            </li>
+          </div>
+        </ul>
+        <hr class="hr-line" />
+        <ul class="nav flex-column mt-3">
+          <div class="mx-1 mb-1">
+            <li class="nav-item px-2">
+              <a
+                href="#"
+                class="nav-link d-inline-block"
+                style="font-size: 13px"
+              >
+                My playlist #1
+              </a>
+            </li>
+            <li class="nav-item px-2">
+              <a
+                href="#"
+                class="nav-link d-inline-block"
+                style="font-size: 13px"
+              >
+                My playlist #2
+              </a>
+            </li>
+          </div>
+        </ul>
+        <ul class="nav flex-column mt-3">
+          <div class="mx-1 mb-0">
+            <li class="nav-item px-4">
+              <i
+                class="far fa-arrow-alt-circle-down d-inline-block"
+                style="vertical-align: middle"
+              ></i>
+              <a href="#" class="nav-link d-inline-block"> Install App </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <!-- End vertical navbar -->
+    <!-- Start top bar -->
+    <div
+      id="top-bar"
+      class="
+        page-content
+        px-3 px-lg-5
+        py-3
+        d-flex
+        justify-content-between
+        sticky-top
+      "
+    >
+      <div class="left-controls">
+        <i class="bi bi-chevron-left"></i>
+        <i class="d-none d-lg-inline pl-4 bi bi-chevron-right"></i>
+      </div>
+      <div class="userpanel">
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            data-display="static"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              class="d-none d-lg-block"
+              src="img/user-logo.jpg"
+              alt="user logo"
+            />
+            hglock
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">Account</button>
+            <button class="dropdown-item" type="button">Profile</button>
+            <button class="dropdown-item" type="button">Get Premium</button>
+            <button class="dropdown-item" type="button">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- START CONTENT HOLDER -->
+    <div class="containter page-content" id="content">
+      <!-- COVER SECTION -->
+
+      <section id="cover" class="mt-3 px-3 px-lg-5">
+        <div>
+          <i class="bi bi-patch-check-fill"></i>
+          Verified Artist
+        </div>
+        <h1>Ed Sheeran</h1>
+        <div class="listeners">66,280,684 monthly listeners</div>
+      </section>
+
+      <!-- ALBUM LIST SECTION -->
+
+      <section id="album-list" class="mt-3 px-3 px-lg-5">
+        <div class="btn-section">
+          <div class="circle-btn">
+            <a href="#"><i class="bi bi-play-circle-fill"></i></a>
+          </div>
+          <div class="normal-btn">
+            <button class="btn">Follow</button>
+          </div>
+          <div>
+            <a href="#"><i class="bi bi-three-dots"></i></a>
+          </div>
+        </div>
+        <h1 class="mt-5">Popular</h1>
+        <div class="row">
+          <div class="col-md-8">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <th class="table-num" scope="row">1</th>
+                  <td class="song-name">Bad Habits</td>
+                  <td class="watched">127,191,452</td>
+                  <td class="song-duration">
+                    <i class="bi bi-heart mr-4"></i><span>3:51</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="table-num" scope="row">2</th>
+                  <td class="song-name">Perfect</td>
+                  <td class="watched">127,191,452</td>
+                  <td class="song-duration">
+                    <i class="bi bi-heart mr-4"></i><span>3:51</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="table-num" scope="row">3</th>
+                  <td class="song-name">Shape of you</td>
+                  <td class="watched">127,191,452</td>
+                  <td class="song-duration">
+                    <i class="bi bi-heart mr-4"></i><span>3:51</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="table-num" scope="row">4</th>
+                  <td class="song-name">Photograph</td>
+                  <td class="watched">127,191,452</td>
+                  <td class="song-duration">
+                    <i class="bi bi-heart mr-4"></i><span>3:51</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="table-num" scope="row">5</th>
+                  <td class="song-name">Thinking out Loud</td>
+                  <td class="watched">127,191,452</td>
+                  <td class="song-duration">
+                    <i class="bi bi-heart mr-4"></i><span>3:51</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div>SEE MORE</div>
+          </div>
+          <div class="col-md-4">
+            <h3>Artist Pick</h3>
+            <div class="artist-pick-wrapper">
+              <div class="img">
+                <img
+                  src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                  alt=""
+                  style="width: 60px"
+                />
+              </div>
+              <div class="text">
+                <div class="text-btn">Bad Habits OUT NOW</div>
+                <a href="#">Ed Sheeran: Bad Habits & The Complete Collection</a>
+                <div class="playlist">Playlist</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- POPULAR SECTION -->
+      <section id="popular" class="mt-5 px-3 px-lg-5">
+        <h3>Popular Releases</h3>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Bad Habits</h5>
+                <p class="card-text">Latest Release - Single</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="/album.html">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">+(Deluxe)</h5>
+                <p class="card-text">2017 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Bad Habits</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://cdn.playlists.net/images/playlists/image/medium/45c055d5e6ee23ba551016109cbb6f41.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">x(Deluxe Edition)</h5>
+                <p class="card-text">2014 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img class="card-img-top"
+                  src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdMlTi6bhckRslJ_aj7sR8cjtAsFmQ-r1-Jl0n-bl3byyha0v9oRvd_cKFARmRZ-rGcu4&usqp=CAU"
+                  alt="Card image cap" />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">No.6 Collabs</h5>
+                <p class="card-text">2019 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273407981084d79d283e24d428e"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">x(Wembley)</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Album SECTION -->
+      <section id="album" class="mt-5 px-3 px-lg-5">
+        <h3>Albums</h3>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img class="card-img-top"
+                  src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdMlTi6bhckRslJ_aj7sR8cjtAsFmQ-r1-Jl0n-bl3byyha0v9oRvd_cKFARmRZ-rGcu4&usqp=CAU"
+                  alt="Card image cap" />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">No.6 Collabs</h5>
+                <p class="card-text">2019 - Album</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">+(Deluxe)</h5>
+                <p class="card-text">2017 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273407981084d79d283e24d428e"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">x(Wembley)</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://lite-images-i.scdn.co/image/ab67616d00001e022fec3ad10ab2f3a637e7a127"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">5</h5>
+                <p class="card-text">2014 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://cdn.playlists.net/images/playlists/image/medium/45c055d5e6ee23ba551016109cbb6f41.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">x(Deluxe Edition)</h5>
+                <p class="card-text">2014 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Bad Habits</h5>
+                <p class="card-text">2021 - Album</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Single's SECTION -->
+      <section id="singles" class="mt-5 px-3 px-lg-5">
+        <h3>Singles and EPs</h3>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Bad Habits</h5>
+                <p class="card-text">Latest Release - Single</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">+(Deluxe)</h5>
+                <p class="card-text">2017 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b27388e170d5ced543d191593fc8"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Afterglow</h5>
+                <p class="card-text">2020 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b2731c2e5a8e25a9af5016e8522c"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">South Border</h5>
+                <p class="card-text">2019 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b2735c2547077cf7e02c6e4bde5b"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">AntiSocial</h5>
+                <p class="card-text">2019 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Bad Habits</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featuring SECTION -->
+      <section id="featuring" class="mt-5 px-3 px-lg-5">
+        <h3>Featuring Ed Sheeran</h3>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card h-100">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67706f000000030373b03502fba84b91dac8e8"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">This is Ed Sheeran</h5>
+                <p class="card-text">Listen to a new track</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://seeded-session-images.scdn.co/v1/img/artist/6eUKZXaKkcviH0Ku9w2n3V/en"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Ed Sheeran Radio</h5>
+                <p class="card-text">By Spotify</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67706f00000003beb08baef00f41687270cbeb"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Hot Hits</h5>
+                <p class="card-text">50 best hits in Poland</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67706f00000003c50a6ae6ad2023a8f4ae6abc"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Summer Hits</h5>
+                <p class="card-text">Best Hits of Summer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://memberdata.s3.amazonaws.com/hi/hitsdd/photos/hitsdd_photo_gal__photo_246678485.png"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Today's top hits</h5>
+                <p class="card-text">Find the latest</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Bad Habits</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FANS ALSO LIKE SECTION -->
+      <section id="others" class="mt-5 px-3 px-lg-5">
+        <h3>Fans also like</h3>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab6761610000e5eb5bc95ec5d305ff21ebad42c1"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Shawn Mendes</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab6761610000e5eb34659ba31866449ae79faa7a"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">James Artur</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab6761610000e5eb3c0a1c0a096b40ff63de4dc0"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">James TW</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab6761610000e5ebe5a4f8ec6996364b2f824fcb"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Smith Smith</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab6761610000e5eb894f1e165ee9c04daa82a5b6"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Charlie Puth</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i1.sndcdn.com/artworks-000163669628-lrwpd1-t500x500.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Tommy Salter</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPEARS ON SECTION -->
+      <section id="appearson" class="mt-5 px-3 px-lg-5">
+        <h3>Appears On</h3>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273da5d5aeeabacacc1263c0f4b"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Reputation</h5>
+                <p class="card-text">2017 - Album</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b2732f44aec83b20e40f3baef73c"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Music to be mur...</h5>
+                <p class="card-text">2020 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://images-na.ssl-images-amazon.com/images/I/71VKI76%2B2fL._SL1000_.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Music to be mur...</h5>
+                <p class="card-text">2021 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273a1e8b73748ee972a4c22be16"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Heavy is the head</h5>
+                <p class="card-text">2019 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273a7613d346501b828b56a0bc3"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Red(Deluxe)</h5>
+                <p class="card-text">2012 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://images-na.ssl-images-amazon.com/images/I/71VKI76%2B2fL._SL1000_.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Music to be mur...</h5>
+                <p class="card-text">2021 - Album</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLAYLIST SECTION -->
+      <section id="playlist" class="mt-5 px-3 px-lg-5">
+        <h3>Artist Playlists</h3>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Bad Habits</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Discovered ON SECTION -->
+      <section id="discovered" class="mt-5 px-3 px-lg-5">
+        <h3>Discovered On</h3>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.pinimg.com/originals/3d/33/30/3d33307bc1f35dfb7f5d61b4b6a54e2d.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Today's top hits</h5>
+                <p class="card-text">Latest Release - Single</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://cdn.playlists.net/images/playlists/image/medium/fd82ca9186871f03f964377eb8f2b8e3.jpg"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Top 50</h5>
+                <p class="card-text">2017 - Album</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67706f00000003a259e07a24c5b6ccf60de2d3"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Soft Pop Hits</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://seeded-session-images.scdn.co/v1/img/artist/6eUKZXaKkcviH0Ku9w2n3V/en"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Ed Sheeran Radio</h5>
+                <p class="card-text">By Spotify</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67706f00000003bd0e19e810bb4b55ab164a95"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Mood Booster</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="card">
+              <div class="card-image">
+                <a href="#">
+                  <span class="badge hidden-icons"
+                    ><i class="bi bi-play-circle-fill"></i
+                  ></span>
+                  <img
+                    class="card-img-top"
+                    src="https://i.scdn.co/image/ab67616d0000b273076254fd9fff61b8c1d46644"
+                    alt="Card image cap"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">90 Soft Pop</h5>
+                <p class="card-text">2021 - Single</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about" class="mt-5 px-3 px-lg-5">
+        <h3>About</h3>
+        <div class="img-wrapper">
+          <img
+            src="https://www.concierto.cl/wp-content/uploads/2021/06/Ed-Sheeran-4-768x432.jpeg"
+            alt=""
+            class="img-fluid"
+          />
+          <div class="rank text-center">
+            #4
+            <div>in the world</div>
+          </div>
+          <div class="text">
+            <p>66,782,593 monthly listeners</p>
+            <p>
+              Ed Sheeran may be the quintessential pop star of the 2010s: a
+              singer/songwriter who seems to acknowledge no boundaries between
+              styles or eras, creating a sound that's idiosyncratic and
+              personal...
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER SECTIONS -->
+      <section id="footer" class="mt-5 px-3 px-lg-5">
+        <div class="row">
+          <div class="col-sm-12 col-md-5">
+            <h3>On tour</h3>
+            <div class="d-flex">
+              <div class="date">
+                <div>
+                  SEP<br />
+                  <span>25</span>
+                </div>
+              </div>
+              <div class="list">
+                <p>Alessia Cara with Andrea Bacelli,</p>
+                <p>Angelique Kidjo, Billie Eilish and BTS...</p>
+                <p class="virtual">Sat 4:00 PM - Virtual Event</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-5">
+            <h3>Offers</h3>
+            <div class="d-flex offer">
+              <div class="offer-img">
+                <img
+                  src="https://images-na.ssl-images-amazon.com/images/I/91KHJu%2BHysL._SL1425_.jpg"
+                  alt=""
+                  style="width: 70px"
+                />
+              </div>
+              <div class="offer-text">
+                <p class="offer-title">"+"(Orange Vinyl LP)</p>
+                <p>"+"(Orange Vinyl LP) Now avaibable, pick up Ed's first</p>
+                <p>album +, pressed onto orange vinyl! +...</p>
+              </div>
+            </div>
+            <div class="d-flex mt-3 offer">
+              <div class="offer-img">
+                <img
+                  src="https://media-us.cdn.prod.wmgecom.com/media/catalog/product/cache/584/image/800x/9df78eab33525d08d6e5fb8d27136e95/1/4/14es_blackvinyl.jpg"
+                  alt=""
+                  style="width: 70px"
+                />
+              </div>
+              <div class="offer-text">
+                <p class="offer-title">"x"(2xLP)</p>
+                <p>x is the brand new album singer-</p>
+                <p>songwriter, Ed Sheeran, pressed onto a</p>
+              </div>
+            </div>
+            <div class="d-flex mt-3 offer">
+              <div class="offer-img">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/2/23/Loose_Change_%28EP%29_by_Ed_Sheeran_%28artwork%29.jpg"
+                  alt=""
+                  style="width: 70px"
+                />
+              </div>
+              <div class="offer-text">
+                <p class="offer-title">LOOSE CHANGE Vinyl Record</p>
+                <p>Track List[Disc 1] Let it out Homeless little bird</p>
+                <p>sofa[Disc 2] one night firefly the city</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="extra-space"></div>
+    </div>
+
+    <!-- CONTENT END -->
+
+    <!-- PLAYER CONTAINER -->
+    <div
+      class="container-fluid fixed-bottom player-bar d-flex align-items-center"
+    >
+      <!-- LEFT SIDE START -->
+      <div class="col-4">
+        <div class="d-none d-xl-inline-block">
+          <img src="img/covers/album-cover_1.jpg" />
+        </div>
+        <div
+          class="d-inline-block text-truncate align-middle px-2"
+          style="max-width: 60%"
+        >
+          <p class="title">
+            <a href="#">Another One Bites The Dust - Remastered 2011</a>
+          </p>
+          <p class="artist"><a href="#">Queen</a></p>
+        </div>
+        <div class="d-none d-md-inline-block px-2">
+          <i class="bi bi-heart"></i>
+        </div>
+        <div class="d-none d-md-inline-block px-1">
+          <i class="bi bi-fullscreen"></i>
+        </div>
+      </div>
+      <!-- LEFT SIDE END -->
+      <!-- MIDDLE PART START -->
+      <div class="col-4 text-center">
+        <div class="pb-1">
+          <div class="d-none d-xl-inline-block">
+            <i class="bi bi-shuffle px-2"></i>
+          </div>
+          <div class="d-inline-block">
+            <i class="bi bi-skip-start-fill px-2" style="font-size: 18px"></i>
+          </div>
+          <div class="d-inline-block">
+            <i class="bi bi-play-circle-fill px-2"></i>
+          </div>
+          <div class="d-inline-block">
+            <i class="bi bi-skip-end-fill px-2" style="font-size: 18px"></i>
+          </div>
+          <div class="d-none d-xl-inline-block">
+            <i class="bi bi-arrow-repeat px-2"></i>
+          </div>
+        </div>
+        <div class="progress-time">
+          <div class="d-inline-block ml-n5">0:00</div>
+          <div class="d-inline-block progress-bar mx-2"></div>
+          <div class="d-inline-block mr-n5">3:29</div>
+        </div>
+      </div>
+      <!-- MIDDLE PART END -->
+      <!-- RIGHT SIDE START -->
+      <div class="col-4 text-right">
+        <div class="d-inline-block">
+          <i class="bi bi-music-note-list"></i>
+        </div>
+        <div class="d-inline-block">
+          <i class="bi bi-speaker px-3"></i>
+        </div>
+        <div class="d-inline-block">
+          <i class="bi bi-volume-up pr-2" style="font-size: 20px"></i>
+        </div>
+        <div class="d-inline-block volume-bar"></div>
+      </div>
+      <!-- RIGHT SIDE END -->
+    </div>
+    <!-- PLAYER CONTAINER END -->
+    <!-- MAIN CONTAINER END -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/favorite.js"></script>
+    <script src="/js/artist.js"></script>
+  </body>
+</html>

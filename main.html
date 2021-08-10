@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Clone</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <!-- Vertical navbar -->
+    <nav>
+      <div class="vertical-nav" id="sidebar">
+        <a class="navbar-brand mt-3" href="main.html"
+          ><img
+            src="data:image/png;base64,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"
+            alt="Spotify logo"
+            class="mx-4 mb-3"
+        /></a>
+
+        <ul class="nav flex-column mb-0">
+          <div class="mx-1 mb-1 active-link">
+            <li class="nav-item px-4">
+              <button>
+                <i class="bi bi-house-door-fill active-link d-inline-block"></i>
+                <a href="main.html" class="nav-link active-link d-inline-block"
+                  >Home
+                </a>
+              </button>
+            </li>
+          </div>
+          <div class="mx-1 mb-1">
+            <li class="nav-item px-4">
+              <button>
+                <i class="bi bi-search d-inline-block"></i>
+                <a href="#" class="nav-link d-inline-block"> Search </a>
+              </button>
+            </li>
+          </div>
+          <div class="mx-1 mb-1">
+            <li class="nav-item px-4">
+              <button>
+                <i class="bi bi-collection d-inline-block"></i>
+                <a href="#" class="nav-link d-inline-block"> Your Library </a>
+              </button>
+            </li>
+          </div>
+        </ul>
+        <ul class="nav flex-column mt-3">
+          <div class="mx-1 mb-1">
+            <li class="nav-item px-4">
+              <button onclick="playlistCreator()">
+                <i class="bi bi-plus-square d-inline-block"></i>
+                <a href="#" class="nav-link d-inline-block">Create playlist</a>
+              </button>
+            </li>
+          </div>
+          <div class="mx-1 mb-0">
+            <li class="nav-item px-4">
+              <i class="bi bi-heart-fill d-inline-block"></i>
+              <a href="favourites.html" class="nav-link d-inline-block">
+                Liked Songs
+              </a>
+            </li>
+          </div>
+        </ul>
+        <hr class="hr-line" />
+        <ul class="nav flex-column mt-3">
+          <div id="playlist-holder" class="mx-1 mb-1"></div>
+        </ul>
+        <ul class="nav flex-column mt-3">
+          <div class="mx-1 mb-0">
+            <li class="nav-item px-4">
+              <button>
+                <i
+                  class="far fa-arrow-alt-circle-down d-inline-block"
+                  style="vertical-align: middle"
+                ></i>
+                <a href="#" class="nav-link d-inline-block"> Install App </a>
+              </button>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <!-- End vertical navbar -->
+
+    <!-- Start top bar -->
+    <div
+      id="top-bar"
+      class="
+        page-content
+        px-3 px-lg-5
+        py-3
+        d-flex
+        justify-content-between
+        sticky-top
+      "
+    >
+      <div class="left-controls">
+        <i class="bi bi-chevron-left"></i>
+        <i class="d-none d-lg-inline pl-4 bi bi-chevron-right"></i>
+      </div>
+      <div class="userpanel">
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            data-display="static"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              class="d-none d-lg-block"
+              src="img/user-logo.jpg"
+              alt="user logo"
+            />
+            hglock
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">Account</button>
+            <button class="dropdown-item" type="button">Profile</button>
+            <button class="dropdown-item" type="button">Get Premium</button>
+            <button class="dropdown-item" type="button">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- START CONTENT HOLDER -->
+    <div class="containter page-content" id="content">
+      <!-- GOOD MORNING SECTION -->
+
+      <section class="mt-3 px-3 px-lg-5">
+        <h4 class="mb-3">Good morning</h4>
+        <div class="row">
+          <div class="col">
+            <div class="card mb-3" style="padding: 0px">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-4">
+                  <a href="artist.html">
+                    <img
+                      class="img-fluid"
+                      src="https://i.scdn.co/image/ab67616d00001e02bac97ec2e87fb989ed0774c7"
+                      alt="..."
+                      style="max-width: 75px"
+                    />
+                  </a>
+                </div>
+                <div class="col-8">
+                  <h6 class="py-4" style="margin: 0px">
+                    <a href="#">HONEST</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col d-none d-md-block">
+            <div class="card mb-3" style="padding: 0px">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-4">
+                  <a href="artist.html">
+                    <img
+                      class="img-fluid"
+                      src="https://misc.scdn.co/liked-songs/liked-songs-300.png"
+                      alt="..."
+                      style="max-width: 75px"
+                  /></a>
+                </div>
+                <div class="col-8">
+                  <h6 class="py-4" style="margin: 0px">
+                    <a href="#">Liked Songs</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col d-none d-lg-block">
+            <div class="card mb-3" style="padding: 0px">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-4">
+                  <a href="artist.html">
+                    <img
+                      class="img-fluid"
+                      src="https://i.scdn.co/image/ab67616d00001e02d24bb6aa36842e45bdd3d1cc"
+                      alt="..."
+                      style="max-width: 75px"
+                  /></a>
+                </div>
+                <div class="col-8">
+                  <h6 class="py-4">
+                    <a href="#">Don't Go Yet</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col d-none d-xl-block">
+            <div class="card mb-3" style="padding: 0px">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-4">
+                  <img
+                    class="img-fluid"
+                    src="https://i.scdn.co/image/ab67616d00001e02f08c94c398b03062d5156876"
+                    alt="..."
+                    style="max-width: 75px"
+                  />
+                </div>
+                <div class="col-8">
+                  <h6 class="py-4">
+                    <a href="#">I Like That</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card mb-3" style="padding: 0px">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-4">
+                  <img
+                    class="img-fluid"
+                    src="https://i.scdn.co/image/ab67616d00001e025149c948fde506624246a684"
+                    alt="..."
+                    style="max-width: 75px"
+                  />
+                </div>
+                <div class="col-8">
+                  <h6 class="py-4" style="margin: 0px">
+                    <a href="#">POST HUMAN</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col d-none d-md-block">
+            <div class="card mb-3" style="padding: 0px">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-4">
+                  <img
+                    class="img-fluid"
+                    src="https://i.scdn.co/image/ab67616d00001e0243168063867ea583d74140e0"
+                    alt="..."
+                    style="max-width: 75px"
+                  />
+                </div>
+                <div class="col-8">
+                  <h6 class="py-4" style="margin: 0px">
+                    <a href="#">Meet You There</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col d-none d-lg-block">
+            <div class="card mb-3" style="padding: 0px">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-4">
+                  <img
+                    class="img-fluid"
+                    src="https://i.scdn.co/image/ab67616d00001e02034df4752f848fd74b5a2c24"
+                    alt="..."
+                    style="max-width: 75px"
+                  />
+                </div>
+                <div class="col-8">
+                  <h6 class="py-4">
+                    <a href="#">Gold-Diggers</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col d-none d-xl-block">
+            <div class="card mb-3" style="padding: 0px">
+              <div class="row">
+                <div class="col-3 col-sm-3 col-md-4">
+                  <img
+                    class="img-fluid"
+                    src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                    alt="..."
+                    style="max-width: 75px"
+                  />
+                </div>
+                <div class="col-8">
+                  <h6 class="py-4">
+                    <a href="#">Bad Habits</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECENTLY PLAYED SECTION -->
+
+      <section class="mt-5 px-3 px-lg-5">
+        <div class="d-flex justify-content-between">
+          <h4 class="mb-3">Recently Played</h4>
+          <div><a href="#">SEE ALL</a></div>
+        </div>
+        <div class="row row-col-4 row-cols-sm-2 row-cols-md-3 row-cols-xl-6">
+          <!--Songs part first row-->
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <a href="artist.html">
+                <img
+                  class="card-img-top"
+                  src="https://www.radiozw.com.pl/wp-content/uploads/2021/06/ED-SHEERAN_Bad-Habits.jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Bad Habits</h5>
+                </div></a
+              >
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <a href="artist.html">
+                <img
+                  class="card-img-top"
+                  src="https://i.scdn.co/image/ab67616d00001e02034df4752f848fd74b5a2c24"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title display-7">Gold-Diggers</h5>
+                </div></a
+              >
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <a href="artist.html">
+                <img
+                  class="card-img-top"
+                  src="https://i.scdn.co/image/ab67616d00001e02d24bb6aa36842e45bdd3d1cc"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Don't Go Yet</h5>
+                </div></a
+              >
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <a href="artist.html">
+                <img
+                  class="card-img-top"
+                  src="https://misc.scdn.co/liked-songs/liked-songs-300.png"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">liked-songs</h5>
+                </div></a
+              >
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <a href="artist.html">
+                <img
+                  class="card-img-top"
+                  src="https://i.scdn.co/image/ab67706f000000031b8b48d00b30b3f38da33d6d"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Zona Trap</h5>
+                </div></a
+              >
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <a href="artist.html">
+                <img
+                  class="card-img-top"
+                  src="https://i.scdn.co/image/ab67616d00001e02deeaf37f9eed84c17e75c34f"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Topless</h5>
+                </div></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MOST POPULAR SECTION -->
+
+      <section class="mt-5 px-3 px-lg-5">
+        <div class="d-flex justify-content-between">
+          <h4 class="mb-3">Most Popular</h4>
+          <div><a href="#">SEE ALL</a></div>
+        </div>
+        <div class="row row-col-4 row-cols-sm-2 row-cols-md-3 row-cols-xl-6">
+          <!--Songs part first row-->
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e02844c2527b8254266a3d8d300"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Under Dog</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e022e35d25eb7288830d5540484"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title display-7">Gloden Hour</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67706f000000039398da9e415a8182f80ae600"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Rock Italia</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67706f00000003959e2de3b13db3d3c860b3c8"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Dance Room</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e021a483608dcdce5900f29c451"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Bloodlines</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e023c333228500f5bb0b980d92a
+"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Heaven</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- POPULAR PLAYLISTS SECTION -->
+
+      <section class="mt-5 px-3 px-lg-5 pb-5">
+        <div class="d-flex justify-content-between">
+          <h4 class="mb-3">Popular playlists</h4>
+          <div><a href="#">SEE ALL</a></div>
+        </div>
+        <div
+          class="row row-col-4 row-cols-sm-2 row-cols-md-3 row-cols-xl-6 mb-5"
+        >
+          <!--Songs part first row-->
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e023d6fa293f49903ed38fbe0de"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Matangi</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e02d2aaf635815c265aa1ecdecc"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title display-7">On My Way</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e027327806c243a77cde4502d6a"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Sweet Dreams</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e02a108e07c661f9fc54de9c43a"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Different World</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e02e973bd8c72bc1af34fef4feb"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Runaways</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div id="card1" class="card h-100">
+              <img
+                class="card-img-top"
+                src="https://i.scdn.co/image/ab67616d00001e02495ce6da9aeb159e94eaa453"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Closer</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- END CONTENT HOLDER -->
+    <!-- PLAYER CONTAINER -->
+    <div
+      class="container-fluid fixed-bottom player-bar d-flex align-items-center"
+    >
+      <!-- LEFT SIDE START -->
+      <div class="col-4">
+        <div class="d-none d-xl-inline-block">
+          <img src="img/covers/album-cover_1.jpg" />
+        </div>
+        <div
+          class="d-inline-block text-truncate align-middle px-2"
+          style="max-width: 60%"
+        >
+          <p class="title">
+            <a href="#">Another One Bites The Dust - Remastered 2011</a>
+          </p>
+          <p class="artist"><a href="#">Queen</a></p>
+        </div>
+        <div class="d-none d-md-inline-block px-2">
+          <i class="bi bi-heart"></i>
+        </div>
+        <div class="d-none d-md-inline-block px-1">
+          <i class="bi bi-fullscreen"></i>
+        </div>
+      </div>
+      <!-- LEFT SIDE END -->
+      <!-- MIDDLE PART START -->
+      <div class="col-4 text-center">
+        <div class="pb-1">
+          <div class="d-none d-xl-inline-block">
+            <i class="bi bi-shuffle px-2"></i>
+          </div>
+          <div class="d-inline-block">
+            <i class="bi bi-skip-start-fill px-2" style="font-size: 18px"></i>
+          </div>
+          <div class="d-inline-block">
+            <i class="bi bi-play-circle-fill px-2"></i>
+          </div>
+          <div class="d-inline-block">
+            <i class="bi bi-skip-end-fill px-2" style="font-size: 18px"></i>
+          </div>
+          <div class="d-none d-xl-inline-block">
+            <i class="bi bi-arrow-repeat px-2"></i>
+          </div>
+        </div>
+        <div class="progress-time">
+          <div class="d-inline-block ml-n5">0:00</div>
+          <div class="d-inline-block progress-bar mx-2"></div>
+          <div class="d-inline-block mr-n5">3:29</div>
+        </div>
+      </div>
+      <!-- MIDDLE PART END -->
+      <!-- RIGHT SIDE START -->
+      <div class="col-4 text-right">
+        <div class="d-inline-block">
+          <i class="bi bi-music-note-list"></i>
+        </div>
+        <div class="d-inline-block">
+          <i class="bi bi-speaker px-3"></i>
+        </div>
+        <div class="d-inline-block">
+          <i class="bi bi-volume-up pr-2" style="font-size: 20px"></i>
+        </div>
+        <div class="d-inline-block volume-bar"></div>
+      </div>
+      <!-- RIGHT SIDE END -->
+    </div>
+    <!-- PLAYER CONTAINER END -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
